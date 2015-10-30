@@ -1,46 +1,57 @@
 package ctec.stateapplicationreal.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.content.Intent;
 
-public class BackPageActivity extends Activity {
+import ctec.stateapplicationreal.model.AndriodSaveState;
+
+public class BackPageActivity extends Activity
+{
 
     private TextView userText;
     private Button backButton;
+    private AndriodSaveState saveState;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_back_page2);
-
+        saveState = (AndriodSaveState) getApplication();
         backButton = (Button) findViewById(R.id.backButton);
         userText = (EditText) findViewById(R.id.userText);
 
         setupListeners();
-
-
-
     }
-private void setupListeners()
-{
-    backButton.setOnClickListener(new View.OnClickListeners()
+
+    private void loadContent()
     {
-        backButton.setOnClickListener(new View.OnClickListener()
+        userText.setText(saveState.getUserName() + " is " + saveState.getAge() + "years old" + "and tired" + saveState.getIsTired());
+    }
+
+    private void setupListeners()
+    {
+        backButton.setOnClickListener(new View.OnClickListeners()
         {
-            public void onClick(View clickView)
+            backButton.setOnClickListener(new View.OnClickListener()
+
             {
-                Intent returnIntent = new Intent();
+                public void onClick (View.clickView)
+                    {
+                            Intent returnIntent = new Intent();
                 setResult(RESULT_OK, returnIntent);
                 finish();
+                }
             }
-        });
+
+            );
+        }
     }
-}
 
 
 }

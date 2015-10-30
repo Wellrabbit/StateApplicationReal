@@ -10,6 +10,7 @@ public class AndriodSaveState extends Application
     private String userName;
     private int age;
     private boolean isTired;
+    private AndriodSaveState saveState;
 
     public AndriodSaveState()
     {
@@ -17,27 +18,33 @@ public class AndriodSaveState extends Application
         age = -0;
         isTired = false;
     }
+
     public String getUserName()
     {
         return userName;
     }
-    public int getAge()
-    {
-        return age;
-    }
-    public boolean getIsTired()
-    {
-        return isTired;
-    }
+
     public void setUserName(String userName)
     {
         this.userName = userName;
     }
+
+    public int getAge()
+    {
+        return age;
+    }
+
     public void setAge(int age)
     {
         this.age = age;
     }
-    public void setIsTired (Boolean isTired)
+
+    public boolean getIsTired()
+    {
+        return isTired;
+    }
+
+    public void setIsTired(Boolean isTired)
     {
         this.isTired = isTired;
     }
